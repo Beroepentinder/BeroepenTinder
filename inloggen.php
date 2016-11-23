@@ -9,7 +9,7 @@
       $db = "268561"; //vul hier de naam van jouw database in (leerlingnummer)
 
       // Hier wordt connectie gemaakt met de database
-      $mysql = mysqli_connect($server,$user,$pass,$db) or die("Fout: Er is geen verbinding met de MySQL-server tot stand gebracht!");
+      $mysql = mysqli_connect($server,$user,$pass,$db) or die("Fout 1: Er is geen verbinding met de MySQL-server tot stand gebracht!");
 
       // Hier wordt de connectie met de database weer verbroken
       mysqli_close($mysql) or die("Het verbreken van de verbinding met de MySQL-server is mislukt!");
@@ -24,7 +24,7 @@
 
     <?php
     // connectie maken met de server
-			$mysql = mysqli_connect($server,$user,$pass,$db) or die("Fout: Er is geen verbinding met de MySQL-server tot stand gebracht!");
+			$mysql = mysqli_connect($server,$user,$pass,$db) or die("Fout 2: Er is geen verbinding met de MySQL-server tot stand gebracht!");
 
 			if(isset($_POST['lernaam'], $_POST['lerww']))
 			{
@@ -32,7 +32,7 @@
 				$sLernaam = mysqli_real_escape_string($mysql, $_POST['lernaam']);
 				$sLerww = mysqli_real_escape_string($mysql, $_POST['lerww']);
 				// Checken of wachtwoord klopt met gebruikersnaam
-				$sWachtwoordControle = mysqli_query($mysql, "SELECT * FROM Leraargegevens WHERE ='$sLernaam' AND Wachtwoord='$sLerww' ") or die("De selectquery op de database is mislukt!");
+				$sWachtwoordControle = mysqli_query($mysql, "SELECT * FROM Leraargegevens WHERE lernaam='$sLernaam' AND lerww='$sLerww' ") or die("De selectquery op de database is mislukt!");
 				$count=mysqli_num_rows($sWachtwoordControle);
 
 				if($count == 1)
@@ -42,7 +42,7 @@
 					$_SESSION['sLernaam'] = $sLernaam;
 
 					// Klant doorsturen naar de hoofdpagina
-					header('Refresh: 2; url=resultaten.php');
+					header('Refresh: 1; url=resultaten.php');
 					echo "U bent succesvol ingelogd!";
 
 				}

@@ -4,7 +4,7 @@ if ($_SESSION['logged_in'] = true) {
 
 }
 else {
-  header('Refresh: 0; url=index.php')
+  header('Refresh: 0; url=index.php');
 }
  ?>
 
