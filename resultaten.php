@@ -9,5 +9,11 @@ else {
  ?>
 
 <html>
-  <p>Resultaten van je leerlingen!</p>
+  <head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+
+  <main>
+    <p>Resultaten van je leerlingen!</p>
+  </main>
 </html>

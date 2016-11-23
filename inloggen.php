@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
     <?php
       session_start();
       $server = "localhost";
@@ -62,7 +64,6 @@
 			mysqli_close($mysql) or die("Het verbreken van de verbinding met de MySQL-server is mislukt!");
 
      ?>
-
     <form action="inloggen.php" method="post">
       <p>Uw leraarafkorting</p>
       <input type="text" name="lernaam" value="3 letterige code">
