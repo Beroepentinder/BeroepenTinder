@@ -6,9 +6,9 @@
     <?php
       session_start();
       $server = "localhost";
-      $user = "268561"; //vul hier jouw gebruikersnaam in (leerlingnummer)
-      $pass = "database1"; //vul hier jouw wachtwoord in (database1)
-      $db = "268561"; //vul hier de naam van jouw database in (leerlingnummer)
+      $user = "beroepentinder"; //vul hier jouw gebruikersnaam in (leerlingnummer)
+      $pass = "Beroepen123Tinder"; //vul hier jouw wachtwoord in (database1)
+      $db = "beroepentinder"; //vul hier de naam van jouw database in (leerlingnummer)
 
       // Hier wordt connectie gemaakt met de database
       $mysql = mysqli_connect($server,$user,$pass,$db) or die("Fout 1: Er is geen verbinding met de MySQL-server tot stand gebracht!");
