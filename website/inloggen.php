@@ -25,7 +25,7 @@
  
 
   <p id="rectangle"></p>
-  <div id="inlogsysteem">
+  
     <h1 id= "titel" STYLE="font-size: 40pt;">Beroepen Tinder</h1>
   <p id= "ondertitel" STYLE="font-size: 25pt;">Fioretti college</p>
 
