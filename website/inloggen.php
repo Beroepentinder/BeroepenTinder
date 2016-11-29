@@ -22,12 +22,75 @@
 
   </head>
   <main>
-  <div id="inlogsysteem">
+  <style>
+#titel {
+position: fixed;
+top: 10px;
+left: 300px;
+font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+color: #017f92;
+}
 
+#rectangle {
+	position: fixed;
+	top: -20px;
+	left: 0px;
+	width: 220px;
+	height: 8000px;
+	background: #adadad;
+
+}
+
+#ondertitel {
+position: fixed;
+top: 76px;
+left: 300px;
+font-family: "Arial Narrow", Arial, sans-serif;
+color: #929899;
+}
+
+#ondertekst {
+position: fixed;
+top: 250px;
+left: 300px;
+font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+color: #black;
+}
+
+#link {
+position: fixed;
+top: 325px;
+left: 300px;
+font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+#Inlogsysteem {
+position: fixed;
+top: 250px;
+left: 300px;
+font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+#Foutmelding_inloggen {
+position: fixed;
+top: 340px;
+left: 300px;
+font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+color: #c90000;
+font-size: 75%;
+}
+</style>
+
+  <p id="rectangle"></p>
+  <div id="inlogsysteem">
+    <h1 id= "titel" STYLE="font-size: 40pt;">Beroepen Tinder</h1>
+  <p id= "ondertitel" STYLE="font-size: 25pt;">Fioretti college</p>
+
+  
+  <div id="Foutmelding_inloggen" >
     <?php
     // connectie maken met de server
 			$mysql = mysqli_connect($server,$user,$pass,$db) or die("Fout 2: Er is geen verbinding met de MySQL-server tot stand gebracht!");
-
 			if(isset($_POST['lernaam'], $_POST['lerww']))
 			{
 				// Beveiligen
@@ -36,17 +99,14 @@
 				// Checken of wachtwoord klopt met gebruikersnaam
 				$sWachtwoordControle = mysqli_query($mysql, "SELECT * FROM Leraargegevens WHERE lernaam='$sLernaam' AND lerww='$sLerww' ") or die("De selectquery op de database is mislukt!");
 				$count=mysqli_num_rows($sWachtwoordControle);
-
 				if($count == 1)
 				{
 					// Wachtwoord en gebruikersnaam zijn juist, dus status updaten
 					$_SESSION['logged_in'] = true;
 					$_SESSION['sLernaam'] = $sLernaam;
-
 					// Klant doorsturen naar de hoofdpagina
 					header('Refresh: 1; url=resultaten.php');
 					echo "U bent succesvol ingelogd!";
-
 				}
 				// Als gebruikersnaam en wachtwoord niet goed zijn
 				else
@@ -55,24 +115,33 @@
 					echo 'Deze combinatie van gebruikersnaam en wachtwoord is niet juist!';
 				}
 			}
-			else
-			{
-			  echo 'Vul je gegevens in om in te loggen.';
-			}
-
+			
 			// Hier wordt de connectie met de database weer verbroken
 			mysqli_close($mysql) or die("Het verbreken van de verbinding met de MySQL-server is mislukt!");
-
      ?>
-    <form action="inloggen.php" method="post">
-      <p>Uw leraarafkorting</p>
-      <input type="text" name="lernaam" value="3 letterige code">
+	
+</div>
 
-      <p>Uw wachtwoord</p>
-      <input type="text" name="lerww" value="Wachtwoord">
-      <br><br>
-      <input type="submit" value="Inloggen">
-    </form>
+
+
+
+
+
+
+
+	
+	<div id="Inlogsysteem" >
+    <form action="inloggen.php" method="post">
+      <p>Leraarafkorting: &nbsp;&nbsp;<input type="text" name="lernaam" value="" ></p>
+      <p>&nbsp;&nbsp;&nbsp;&nbsp;Wachtwoord: &nbsp;&nbsp;<input type="text" name="lerww" value=""></p> <!--&nbsp; is een spatie-->
+      
+
+
+	  </br>
+      <input type="submit" value="Inloggen">  <!-- Ik verander deze later in een afbeelding, dat is mooier-->
+    </form>	
+	</div>
+	
   </div>
   </main>
 </html>
