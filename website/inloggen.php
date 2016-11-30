@@ -48,9 +48,8 @@
 					$_SESSION['logged_in'] = true;
 					$_SESSION['sLernaam'] = $sLernaam;
 					// Klant doorsturen naar de hoofdpagina
-					header('Refresh: 1; url=resultaten.php');
-					echo "U bent succesvol ingelogd!";
-				}
+					header('Refresh: 0; url=resultaten.php');
+									}
 				// Als gebruikersnaam en wachtwoord niet goed zijn
 				else
 				{
