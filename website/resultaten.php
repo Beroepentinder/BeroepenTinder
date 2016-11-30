@@ -44,8 +44,9 @@ else {
 				  //resultaten laden voor leraar
 				  while(list($leerlingnummer, $leerlingvoornaam, $leerlingtussenvoegsel, $leerlingachernaam, $leerlingsector, $leerlingdatum) = mysqli_fetch_row($resultaten))
 				  {
-					echo"<tr><td>$leerlingnummer</td><td>$leerlingvoornaam</td><td>$leerlingtussenvoegsel</td><td>$leerlingachernaam</td><td>$leerlingsector</td><td>$leerlingdatum</td></tr>\n";
-				  }
+					$leerlinghelenaam = "$leerlingvoornaam $leerlingtussenvoegsel $leerlingachernaam";
+					echo"<tr><td>$leerlingnummer</td><td>$leerlinghelenaam</td><td>$leerlingsector</td><td>$leerlingdatum</td></tr>\n";
+				   }
 				?>
     </table>
   </main>
