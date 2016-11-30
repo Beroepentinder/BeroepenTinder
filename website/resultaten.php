@@ -23,7 +23,7 @@ else {
 
       // Hier wordt connectie gemaakt met de database
       $mysql = mysqli_connect($server,$user,$pass,$db) or die("Fout 1: Er is geen verbinding met de MySQL-server tot stand gebracht!");
-      $Lernaam = $_SESSION['sLernaam']
+      $Lernaam = $_SESSION['sLernaam'];
       $resultaten = mysqli_query($mysql,"SELECT * FROM Leerlingen WHERE Mentor_afkorting = '$Lernaam' ") or die("De selectquery op de database is mislukt!");
 
       // Hier wordt de connectie met de database weer verbroken
