@@ -74,8 +74,8 @@
 	
 	<div id="Inlogsysteem" >
     <form action="inloggen.php" method="post">
-      <p>Leraarafkorting: &nbsp;&nbsp;<input type="text" name="lernaam" value="" ></p>
-      <p>&nbsp;&nbsp;&nbsp;&nbsp;Wachtwoord: &nbsp;&nbsp;<input type="text" name="lerww" value=""></p> <!--&nbsp; is een spatie-->
+      <p>Leraarafkorting: &nbsp;&nbsp;<input type="text" name="lernaam" value="" autocorrect=off></p>
+      <p>&nbsp;&nbsp;&nbsp;&nbsp;Wachtwoord: &nbsp;&nbsp;<input type="text" name="lerww" value="" autocorrect=off></p> <!--&nbsp; is een spatie-->
       
 
 
