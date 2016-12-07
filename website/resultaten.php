@@ -33,7 +33,7 @@ else {
   <main>
     <p>Resultaten van je leerlingen!</p>
 
-    <table>
+    <table id="tabel_resultaten">
   <tr>
     <th>Leerlingnummer</th>
     <th>Naam</th>
