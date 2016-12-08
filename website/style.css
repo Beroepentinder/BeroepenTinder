@@ -57,24 +57,21 @@ font-size: 75%;
 }
 
 #tabel_resultaten {
-margin-left: auto;
-margin-right: auto;}
-
-table {
+	margin-left: auto;
+	margin-right: auto;
 	border-collapse: collapse;
 	width: 70%;
 	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
 
 th {
-	text-align: left;
 	background-color: #017f92;
-    color: white;
+	color: white;
 }
 
 th, td {
-    padding: 15px;
-    text-align: left;
+	padding: 15px;
+	text-align: left;
 }
 
 tr:nth-child(even) {background-color: #f2f2f2}
