@@ -2,7 +2,6 @@
 <html>
   <head>
     <link rel="stylesheet" type="text/css" href="style.css">
-
     <?php
       session_start();
       $server = "localhost";
@@ -49,7 +48,8 @@
 					$_SESSION['sLernaam'] = $sLernaam;
 					// Klant doorsturen naar de hoofdpagina
 					header('Refresh: 0; url=resultaten.php');
-									}
+					
+				}
 				// Als gebruikersnaam en wachtwoord niet goed zijn
 				else
 				{
@@ -75,7 +75,7 @@
 	<div id="Inlogsysteem" >
     <form action="inloggen.php" method="post">
       <p>Leraarafkorting: &nbsp;&nbsp;<input type="text" name="lernaam" value="" autocorrect=off></p>
-      <p>&nbsp;&nbsp;&nbsp;&nbsp;Wachtwoord: &nbsp;&nbsp;<input type="text" name="lerww" value="" autocorrect=off class="password"></p> <!--&nbsp; is een spatie-->
+      <p>&nbsp;&nbsp;&nbsp;&nbsp;Wachtwoord: &nbsp;&nbsp;<input name="lerww" value="" autocorrect=off type="password" ></p> <!--&nbsp; is een spatie-->
       
 
 
