@@ -31,8 +31,6 @@ else {
   </head>
 
   <main>
-    <p>Resultaten van je leerlingen!</p>
-
     <table id="tabel_resultaten">
   <tr>
     <th>Leerlingnummer</th>
