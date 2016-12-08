@@ -31,6 +31,7 @@ else {
   </head>
 
   <main>
+  <p id="rectangle"></p>
     <table id="tabel_resultaten">
   <tr>
     <th>Leerlingnummer</th>
