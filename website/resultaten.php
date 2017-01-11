@@ -11,7 +11,7 @@ else {
 <html>
   <head>
 	<link rel="stylesheet" type="text/css" href="style.css">
-	<link rel="icon" href="faviconvlam.gif" type="image/gif" >
+	<link rel="icon" href="faviconvlamtr.gif" type="image/gif" >
 
     <?php
       session_start();
