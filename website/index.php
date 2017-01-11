@@ -2,8 +2,9 @@
 <html>
 <head>
 
-  <link rel="stylesheet" type="text/css" href="style.css">
-
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="icon" href="faviconvlam.gif" type="image/gif" >
+	
 </head>
 <body>
 
