@@ -17,8 +17,8 @@
 <div data-role="page">
 
 	<div data-role="header" data-position="fixed">
-		<h1>Page Title</h1>
-	</div><!-- /header -->
+
+	</div>
 
 	<div role="main" class="ui-content">
 		<?php
@@ -50,15 +50,17 @@
 		$counts = array_count_values($ar);
 		arsort($counts);
 
-		$top_with_count = array_slice($counts, 0, 1, true);
+		$top_with_count = array_slice($counts, 0, 3, true);
 		$top = array_keys($top_with_count);
 
-		$topId = $top[0];
-		$sectorNameArray = mysqli_query($mysql, "SELECT SectorNaam FROM Sectoren WHERE SectorID=$topId");
-
-		list($sectorNameString) = mysqli_fetch_row($sectorNameArray);
-		echo "<h1>Jouw sector is {$sectorNameString}!</h1>";
-
+		echo '<ol data-role="listview">';
+		echo '<li data-role="list-divider">Jouw top 3 sectoren zijn:</li>';
+		foreach ($top as $e){
+			$sectorNameArray = mysqli_query($mysql, "SELECT SectorNaam FROM Sectoren WHERE SectorID=$e");
+			list($sectorNameString) = mysqli_fetch_row($sectorNameArray);
+			echo "<li><a href=\"#\">$sectorNameString</li>";
+		}
+		echo '</ol>';
 		// Hier wordt de connectie met de database weer verbroken
 		mysqli_close($mysql) or die("Het verbreken van de verbinding met de MySQL-server is mislukt!");
 		?>
