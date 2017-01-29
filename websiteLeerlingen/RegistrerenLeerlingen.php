@@ -26,17 +26,17 @@
 					<tr>
 						<center>
 						<h1>Registreer jezelf!</h1>
-						<p>* is een verplicht vak</p>
+						<p style="color: red;"><sup style="color: red;">*</sup> Vereist</p>
 					</tr>
 					<tr>
-						<td align='center'><label for="leerlingnummer">Leerlingnummer*:</label></td>
+						<td align='center'><label for="leerlingnummer"><sup style="color: red;">*</sup> Leerlingnummer:</label></td>
 						<td><input type='number' id="leerlingnummer" name="leerlingnummer" min="000000" max="999999" required></td>
 					</tr>
 					<tr>
 					<tr>
-						<td align='center'><label for="mentor" class="select">Mentor*:</label></td>
+						<td align='center'><label for="mentor" class="select"><sup style="color: red;">*</sup> Mentor:</label></td>
 						<td>
-							<select name="mentor" id="select-choice-min">
+							<select name="mentor" id="select-choice-min" required>
 									<?php
 									$mysql = mysqli_connect($server,$user,$pass,$db) or die("Fout: Er is geen verbinding met de MySQL-server tot stand gebracht!");
 										$lerarenAfkortingen = mysqli_query($mysql,"SELECT lernaam FROM Leraargegevens");
@@ -53,24 +53,24 @@
 							</select>
 						</td>
 					</tr>
-						<td align='center'><label for="voornaam">Voornaam*:</label></td>
+						<td align='center'><label for="voornaam"><sup style="color: red;">*</sup> Voornaam:</label></td>
 						<td><input type='text' id="voornaam" name="voornaam" required></td>
 					</tr>
 					<tr>
 						<td align='center'><label for ="tussenvoegsel">Tussenvoegsel:</label></td>
-						<td><input type='text' id="tussenvoegsel" name="tussenvoegsel" required></td>
+						<td><input type='text' id="tussenvoegsel" name="tussenvoegsel"></td>
 					</tr>
 					<tr>
-						<td align='center'><label for ="achternaam">Achternaam*:</label></td>
+						<td align='center'><label for ="achternaam"><sup style="color: red;">*</sup> Achternaam:</label></td>
 						<td><input type='text' id="achternaam" name="achternaam" required></td>
 						<td>
 					</tr>
 					<tr>
-						<td align='center'><label for="wachtwoord">Wachtwoord*:</label></td>
+						<td align='center'><label for="wachtwoord"><sup style="color: red;">*</sup> Wachtwoord:</label></td>
 						<td><input type='password' id="wachtwoord" name="wachtwoord" required></td>
 					</tr>
 					<tr>
-						<td align='center'><label for ="wachtwoordCheck">Herhaal Wachtwoord*:</label></td>
+						<td align='center'><label for ="wachtwoordCheck"><sup style="color: red;">*</sup> Herhaal Wachtwoord:</label></td>
 						<td><input type='password' id="wachtwoordCheck" name ="wachtwoordCheck" onChange="checkPasswordMatch();" required></td>
 						<td>
 						<div class="registrationFormAlert" id="divCheckPasswordMatch">
@@ -104,7 +104,7 @@
 					// Daarna worden alle variabelen geescaped voor beveiliging. Dan wordt gekeken of
 					// het wachtwoord wel hetzelfde is als het check-wachtwoord, zo niet, dan krijgt de gebruiker een notificatie
 					//Is de registratie succesvol, dan wordt de gebruiker doorgestuurd naar de loginpagina.
-				if ((isset($_POST["leerlingnummer"])) && (isset($_POST["voornaam"])) && (isset($_POST["achternaam"])) && (isset($_POST["wachtwoord"])) && (isset($_POST["wachtwoordCheck"])))
+				if ((isset($_POST["leerlingnummer"])) && (isset($_POST["voornaam"])) && (isset($_POST["achternaam"])) && (isset($_POST["mentor"])) && (isset($_POST["wachtwoord"])) && (isset($_POST["wachtwoordCheck"])))
 				{
 					$mysql = mysqli_connect($server,$user,$pass,$db) or die("Fout: Er is geen verbinding met de MySQL-server tot stand gebracht!");
 
@@ -113,11 +113,19 @@
 					$achternaam = mysqli_real_escape_string($mysql, $_POST["achternaam"]);
 					$wachtwoord = mysqli_real_escape_string($mysql, $_POST["wachtwoord"]);
 					$wachtwoordCheck = mysqli_real_escape_string($mysql, $_POST["wachtwoordCheck"]);
+					$mentor = mysqli_real_escape_string($mysql, $_POST["mentor"]);
 
-					if ($newpassword == $newpasswordcheck) {
+					if (isset($_POST["tussenvoegsel"])) {
+						$tussenvoegsel = mysqli_real_escape_string($mysql, $_POST["tussenvoegsel"]);
+					}
+					else {
+						$tussenvoegsel = null;
+					}
 
-						mysqli_query($mysql,"INSERT INTO `Klant`(`klantnummer`, `voornaam`, `achternaam`, `straat`, `huisnummer`, `postcode`, `woonplaats`, `telefoonnr`, `emailadres`, `Wachtwoord`) VALUES (NULL, '$name','$lastname','$street', '$housenumber', '$zipcode', '$residence', '$telnum', '$newemail', '$newpassword')");
-						header('Refresh:3; url=log_in.php');
+					if ($wachtwoord == $wachtwoordCheck) {
+
+						mysqli_query($mysql,"INSERT INTO `Leerlingen`(`LLnr`, `Wachtwoord`, `Voornaam`, `Tussenvoegsel`, `Achternaam`, `Mentor_afkorting`) VALUES ('$leerlingnummer', '$wachtwoord', '$voornaam', '$tussenvoegsel', '$achternaam', '$mentor')");
+						header('Refresh:3; url=index.php');
 						echo "U bent succesvol geregistreerd!";
 					}
 
