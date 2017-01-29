@@ -8,13 +8,13 @@
 			$pass = "Beroepen123Tinder"; //vul hier jouw wachtwoord in (database1)
 			$db = "beroepentinder"; //vul hier de naam van jouw database in (leerlingnummer)
 		?>
-
+		
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 		<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 		<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 	</head>
-
+	
 	<body>
 		<div data-role="header" class="ui-content">
 		</div>
@@ -40,16 +40,16 @@
 									<?php
 									$mysql = mysqli_connect($server,$user,$pass,$db) or die("Fout: Er is geen verbinding met de MySQL-server tot stand gebracht!");
 										$lerarenAfkortingen = mysqli_query($mysql,"SELECT lernaam FROM Leraargegevens");
-
+											
 											while ($row = mysqli_fetch_assoc($lerarenAfkortingen)) {
-
+												
 												foreach($row as $field) {
 													echo "<option value=\"$field\">$field</option>";
 												}
 											}
-									mysqli_close($mysql) or die("Het verbreken van de verbinding met de MySQL-server is mislukt!");
+									mysqli_close($mysql) or die("Het verbreken van de verbinding met de MySQL-server is mislukt!"); 
 								?>
-
+								
 							</select>
 						</td>
 					</tr>
@@ -75,7 +75,7 @@
 						<td>
 						<div class="registrationFormAlert" id="divCheckPasswordMatch">
 						</div>
-
+						
 						<script>
 							function checkPasswordMatch() {
 								var password = $("#wachtwoord").val();
@@ -84,7 +84,7 @@
 									$("#divCheckPasswordMatch").html("Wachtwoorden zijn niet hetzelfde!");
 									document.getElementById("divCheckPasswordMatch").style.color = "red";
 								}
-
+								
 								else {
 									$("#divCheckPasswordMatch").html("Wachtwoorden zijn hetzelfde.");
 									document.getElementById("divCheckPasswordMatch").style.color = "green";
@@ -96,16 +96,16 @@
 						</script>
 						</td>
 					</tr>
-				</table>
+				</table>		
 				<input type='submit' name='REGISTER' value="Registreer"></td>
 			</form>
-
+			
 			<?php 	// Hier wordt eerst gecheckt of alle variablenen zijn ingevuld voor de zekerheid
-					// Daarna worden alle variabelen geescaped voor beveiliging. Dan wordt gekeken of
-					// het wachtwoord wel hetzelfde is als het check-wachtwoord, zo niet, dan krijgt de gebruiker een notificatie
+					// Daarna worden alle variabelen geescaped voor beveiliging. Dan wordt gekeken of 
+					// het wachtwoord wel hetzelfde is als het check-wachtwoord, zo niet, dan krijgt de gebruiker een notificatie 
 					//Is de registratie succesvol, dan wordt de gebruiker doorgestuurd naar de loginpagina.
 				if ((isset($_POST["leerlingnummer"])) && (isset($_POST["voornaam"])) && (isset($_POST["achternaam"])) && (isset($_POST["mentor"])) && (isset($_POST["wachtwoord"])) && (isset($_POST["wachtwoordCheck"])))
-				{
+				{ 
 					$mysql = mysqli_connect($server,$user,$pass,$db) or die("Fout: Er is geen verbinding met de MySQL-server tot stand gebracht!");
 
 					$leerlingnummer = mysqli_real_escape_string($mysql, $_POST["leerlingnummer"]);
@@ -114,28 +114,35 @@
 					$wachtwoord = mysqli_real_escape_string($mysql, $_POST["wachtwoord"]);
 					$wachtwoordCheck = mysqli_real_escape_string($mysql, $_POST["wachtwoordCheck"]);
 					$mentor = mysqli_real_escape_string($mysql, $_POST["mentor"]);
-
+					
 					if (isset($_POST["tussenvoegsel"])) {
 						$tussenvoegsel = mysqli_real_escape_string($mysql, $_POST["tussenvoegsel"]);
 					}
 					else {
 						$tussenvoegsel = null;
 					}
-
+					   
 					if ($wachtwoord == $wachtwoordCheck) {
-
+						
+						$qLLnrCheck = mysqli_query($mysql, "SELECT * FROM Leerlingen WHERE LLnr='$leerlingnummer' ") or die("De selectquery op de database is mislukt!");
+						$count=mysqli_num_rows($qLLnrCheck);
+						if($count == 1) {
+							echo '<script type="text/javascript">alert("Op dit leerlingnummer bestaat al een account!");</script>';
+						}
+						else {
 						mysqli_query($mysql,"INSERT INTO `Leerlingen`(`LLnr`, `Wachtwoord`, `Voornaam`, `Tussenvoegsel`, `Achternaam`, `Mentor_afkorting`) VALUES ('$leerlingnummer', '$wachtwoord', '$voornaam', '$tussenvoegsel', '$achternaam', '$mentor')");
 						header('Refresh:3; url=index.php');
 						echo "U bent succesvol geregistreerd!";
+						}
 					}
 
 					else {
 						echo "Uw wachtwoord is niet hetzelfde als de wachtwoordcheck!";
 					}
-					mysqli_close($mysql) or die("Het verbreken van de verbinding met de MySQL-server is mislukt!");
-				}
+					mysqli_close($mysql) or die("Het verbreken van de verbinding met de MySQL-server is mislukt!");			
+				} 
 		?>
-		</div>
+		</div>	
 		</div>
 
 		<div data-role="footer" class="ui-content">
