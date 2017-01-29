@@ -1,0 +1,102 @@
+#titel {
+position: fixed;
+top: 11px;
+left: 18.5vw;
+font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+color: #017f92;
+}
+
+#rectangle {
+	position: fixed;
+	top: -20px;
+	left: 0px;
+	width: 14vw;
+	height: 120vh;
+	background: #175191;
+
+}
+
+#ondertitel {
+position: fixed;
+top: 76px;
+left: 18.5vw;
+font-family: "Arial Narrow", Arial, sans-serif;
+color: #929899;
+}
+
+#inlogtekst_beheerder {
+position: fixed;
+top: 420px;
+left: 18.5vw;
+font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+color: #black;
+}
+
+#inlogtekst_docent {
+position: fixed;
+top: 180px;
+left: 18.5vw;
+font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+color: #black;
+}
+
+#ondertekst {
+position: fixed;
+top: 250px;
+left: 18.5vw;
+font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+color: #black;
+}
+
+#link {
+position: fixed;
+top: 325px;
+left: 18.5vw;
+font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+
+}
+
+#Inlogsysteem {
+position: fixed;
+top: 250px;
+left: 18.5vw;
+font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+#Foutmelding_inloggen {
+position: fixed;
+top: 340px;
+left: 18.5vw;
+font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+color: #c90000;
+font-size: 75%;
+}
+
+#tabel_resultaten {
+	margin-left: auto;
+	margin-right: auto;
+	border-collapse: collapse;
+	width: 70%;
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+#Achtergrond_docenten {
+	position: fixed;
+	z-index: -1;
+	left: 14vw;
+	width: 100vw;
+	height: 110vh;
+	top: -10px;
+}
+
+th {
+	background-color: #017f92;
+    color: white;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2}
