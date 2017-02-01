@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-<head> 
+<head>
+
 	<link rel="stylesheet" type="text/css" href="style.css"></link>
 	<link rel="icon" href="faviconvlamtr.gif" type="image/gif" >
 
@@ -10,8 +11,18 @@
 	<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-	
-	
+
+	<?php
+		session_start();
+		if(isset($_SESSION['logged_in'])) {
+			header('Location: mainloggedin.php ');
+			die();
+		}
+		else {
+
+		}
+	?>
+
 </head>
 <body>
 
@@ -22,27 +33,18 @@
 	</div>
 
 	<div role="main" class="ui-content">
-		<a href="RegistrerenLeerlingen.php">Nieuw hier?</a><br><br>
-		<a href="index.php">De test doen?</a><br><br>
-		<?php
-		if (isset($_SESSION['logged_in'])) {
-			echo "<a href=\"logout.php\">Uitloggen?</a>";
-		}
-		else {
-			echo"<a href=\"login.php\">Inloggen?</a>";
-		}
-		?>
-		
-		<?php 
-				//if (mail('LennardvanderPlas@Fiorettileerling.nl', 'Hello darknes my old friend!', 'if its 2017 my plan worked!') == true)
-				//{
-				//	echo "it workededed";
-				//}
-		?> 
+
+		<form action="login.php">
+		<input type="submit" value="Klik hier om in te loggen" />
+		</form>
+
+		<form action="RegistrerenLeerlingen.php">
+		<input type="submit" value="Registreer jezelf!" />
+		</form>
 	</div>
 
 	<div data-role="footer" data-position="fixed">
-		<h4>Page Footer</h4>
+		<h4>BeroepenTinder Fioretti College</h4>
 	</div><!-- /footer -->
 </div><!-- /page -->
 
