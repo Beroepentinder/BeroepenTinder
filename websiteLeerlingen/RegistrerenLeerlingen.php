@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html>
 	<head>
+	<link rel="stylesheet" type="text/css" href="style.css"></link>
+	<link rel="icon" href="faviconvlamtr.gif" type="image/gif" >
+
+	<title>BeroepenTinder</title>
+	
 		<?php
 			session_start();
 			$server = "localhost";
