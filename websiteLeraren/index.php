@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <html>
+
+<?php 
+header('Refresh: 0; url=inloggen.php');
+?>
+
 <head>
 
 	<link rel="stylesheet" type="text/css" href="style.css"></link>
