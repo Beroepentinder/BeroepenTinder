@@ -57,11 +57,100 @@ font-size: 75%;
 }
 
 #tabel_resultaten {
-	margin-left: auto;
-	margin-right: auto;
+	position: fixed;
+	left: 28vh;
+	top: 20vh;
 	border-collapse: collapse;
 	width: 70%;
 	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+#tabel_beheerder {
+	position: fixed;
+	left: 56vw;
+	top: 30vh;
+	border-collapse: collapse;
+	width: 40%;
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+	text-align: center;
+	background: #e3e3e3;
+	border: 1px solid black;
+}
+
+#Beheerder_tabel_titel {
+	position: fixed;
+	left: 56vw;
+	top: 26vh;
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+	
+}
+
+#structuur_beheerder {
+	position: fixed;
+	left: 18.5vw;
+	top: 200px;
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+	
+}
+
+#aanmaaksysteem_beheerder {
+	position: fixed;
+	width: 100%;
+	top: 25vh;
+	left: 18.5vw;
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+	
+}
+
+#Beheerder_titel {
+	position: fixed;
+	top: 11px;
+	left: 18.5vw;
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+	color: #000000;
+		
+}
+
+#Docenten_titel {
+	position: fixed;
+	top: 0px;
+	left: 28vh;
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+	color: #000000;
+		
+}
+
+#Docenten_tabel_titel {
+	position: fixed;
+	top: 15vh;
+	left: 28vh;
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+	
+}
+
+#Foutmelding_beheerder {
+	position: fixed;
+	left: 18.5vw;
+	top: 41vh;
+	color: #c90000;
+	
+}
+
+#Uitlogknop {
+	position: fixed;
+	left: 2.5vw;
+	top: 50%;
+	width: 9vw;
+	height: 9vw;
+	z-index: 2;
+}
+
+#Uitlogknop_titel {
+	position: fixed;
+	left: 3.7vw;
+	top: 42.5%;
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+	z-index: 2;
 }
 
 #Achtergrond_docenten (
