@@ -17,7 +17,6 @@ header('Refresh: 0; url=inloggen.php');
   <h1 id= "titel" STYLE="font-size: 40pt;">Beroepen Tinder</h1>
   <p id= "ondertitel" STYLE="font-size: 25pt;">Fioretti college</p>
   <p id= "ondertekst" STYLE="font-size: 15pt;">Welkom op de Beroepentinder.</p>
-  <a href="inloggen.php" id= "link">Klik hier om in te loggen.</a>
 	<IMG id="Achtergrond_docenten" SRC="http://www.beroepentinder.fiorettileerling.nl/websiteLeraren/Achtergrond_docenten">
 </body>
 </html>
