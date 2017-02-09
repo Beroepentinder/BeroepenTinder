@@ -61,7 +61,7 @@ else {
   <IMG id="Achtergrond_docenten" SRC="http://www.beroepentinder.fiorettileerling.nl/websiteLeraren/Achtergrond_docenten.png">
   <a href="http://www.beroepentinder.fiorettileerling.nl/websiteLeraren/inloggen_beheerder.php"><IMG id="Uitlogknop" SRC="http://www.beroepentinder.fiorettileerling.nl/websiteLeraren/Uitloggen.png"></a>
   <p id="Uitlogknop_titel" STYLE="font-size: 20pt;"><b>Uitloggen</b></p>
-  <p id="rectangle" style="border:2px solid #000;"></p>
+  <p id="rectangle" style="border:7px solid #000;"></p>
   
     <div id="Beheerder_tabel_titel" STYLE="font-size: 15pt;"><b>Geregistreerde docenten</b></div>
 	<table id="tabel_beheerder">
