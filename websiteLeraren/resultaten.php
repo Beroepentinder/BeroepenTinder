@@ -31,7 +31,12 @@ else {
   </head>
 
   <main>
-  <p id="rectangle"></p>
+    <p id="Docenten_titel" STYLE="font-size: 35pt;">Resultaten</p>
+  <IMG id="Achtergrond_docenten" SRC="http://www.beroepentinder.fiorettileerling.nl/websiteLeraren/Achtergrond_docenten.png">
+  <p id="rectangle" style="border:2px solid #000;"></p>
+      <div id="Docenten_tabel_titel" STYLE="font-size: 15pt;"><b>Afgelegde tests</b></div>
+	<a href="http://www.beroepentinder.fiorettileerling.nl/websiteLeraren/inloggen.php"><IMG id="Uitlogknop" SRC="http://www.beroepentinder.fiorettileerling.nl/websiteLeraren/Uitloggen.png"></a>
+	<p id="Uitlogknop_titel" STYLE="font-size: 20pt;"><b>Uitloggen</b></p>
     <table id="tabel_resultaten">
   <tr>
     <th>Leerlingnummer</th>
