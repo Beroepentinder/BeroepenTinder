@@ -3,17 +3,21 @@ position: fixed;
 top: 11px;
 left: 18.5vw;
 font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-color: #017f92;
+color: #27658D;
+}
+
+#kruisje {
+	width: 3vw;
+	height: 3vw;	
 }
 
 #rectangle {
 	position: fixed;
-	top: -30px;
-	left: 0px;
+	top: -25px;
+	left: -7px;
 	width: 14vw;
 	height: 120vh;
-	background: #adadad;
-
+	background: #737373;
 }
 
 #ondertitel {
@@ -141,7 +145,7 @@ font-size: 75%;
 #Uitlogknop {
 	position: fixed;
 	left: 2.5vw;
-	top: 50%;
+	top: 660px;
 	width: 9vw;
 	height: 9vw;
 	z-index: 2;
@@ -149,8 +153,8 @@ font-size: 75%;
 
 #Uitlogknop_titel {
 	position: fixed;
-	left: 3.7vw;
-	top: 42.5%;
+	left: 5.3vh;
+	top: 600px;
 	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 	z-index: 2;
 }
@@ -163,7 +167,7 @@ font-size: 75%;
 }
 
 th {
-	background-color: #017f92;
+	background-color: #27658D;
     color: white;
 }
 
