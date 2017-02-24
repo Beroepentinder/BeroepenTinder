@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+    <!-- login.php -->
 	<link rel="stylesheet" type="text/css" href="style.css"></link>
 	<link rel="icon" href="faviconvlamtr.gif" type="image/gif" >
 
@@ -11,6 +11,7 @@
 	<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
 
 	<?php
 		session_start();
@@ -24,7 +25,6 @@
 
 		// Hier wordt de connectie met de database weer verbroken
 		mysqli_close($mysql) or die("Het verbreken van de verbinding met de MySQL-server is mislukt!");
-
 	?>
 </head>
 <body>
@@ -35,16 +35,22 @@
 		<h1>Log in</h1>
 	</div>
 
-	<div role="main" class="ui-content">
-		<form action="login.php" method="post">
-			<label for="leerlingnummer">Leerlingnummer:</label>
-			<input type="text" name="leerlingnummer" id="leerlinglingnummer" required>
+			<div role="main" class="ui-content">
+				<form action="login.php" method="post">
+					<label for="leerlingnummer">Leerlingnummer:</label>
+					<input type="number" name="leerlingnummer" id="leerlinglingnummer" required>
 
-			<label for "wachtwoord">Wachtwoord:</label>
-			<input type="password" name="wachtwoord" id="wachtwoord" required>
+					<label for "wachtwoord">Wachtwoord:</label>
+					<input type="password" name="wachtwoord" id="wachtwoord" required>
+					<a href="forgetPassword.php">Wachtwoord vergeten?</a>
 
-			<input type="submit" value="Inloggen" data-inline="true">
-		</form>
+					<input type="submit" value="Inloggen" >
+				</form>
+
+				<form action="mainloggedin.php">
+				<input type="submit" id="home" value="Home"/>
+				</form>
+
 		<?php
 			if ((isset($_POST["leerlingnummer"])) && (isset($_POST["wachtwoord"]))) {
 				$mysql = mysqli_connect($server,$user,$pass,$db) or die("Fout: Er is geen verbinding met de MySQL-server tot stand gebracht!");
@@ -61,13 +67,14 @@
 					$sCount = mysqli_num_rows($sValidatieCheck);
 					if($sCount == 1) {
 						$_SESSION['validated'] = true;
-					}
 
-					// Wachtwoord en gebruikersnaam zijn juist, dus status updaten
-					$_SESSION['logged_in'] = true;
-					$_SESSION['sLeerlingnummer'] = $sLeerlingnummer;
-					// Leerling doorsturen naar de hoofdpagina
-					header("Location: mainloggedin.php");
+
+						// Wachtwoord en gebruikersnaam zijn juist, dus status updaten
+						$_SESSION['logged_in'] = true;
+						$_SESSION['sLeerlingnummer'] = $sLeerlingnummer;
+						// Leerling doorsturen naar de hoofdpagina
+						header("Location:mainloggedin.php");
+					}
 				}
 				// Als gebruikersnaam en wachtwoord niet goed zijn
 				else

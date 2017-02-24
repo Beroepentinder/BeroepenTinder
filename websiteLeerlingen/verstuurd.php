@@ -11,6 +11,8 @@
 	<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<script type="text/javascript">
+	</script>
 
 	<?php
 		session_start();
@@ -28,16 +30,12 @@
 <div data-role="page">
 
 	<div data-role="header" data-position="fixed">
-
+		<h1>Welkom</h1>
 	</div>
-
-	<div role="main" class="ui-content">
-
-
 		<table>
 			<tr>
 				<?php
-				session_start();
+
 				$server = "localhost";
 				$user = "beroepentinder"; 		//vul hier jouw gebruikersnaam in (leerlingnummer)
 				$pass = "Beroepen123Tinder"; 	//vul hier jouw wachtwoord in (database1)
@@ -71,16 +69,18 @@
 				echo '<ol data-role="listview">';
 				echo '<li data-role="list-divider">Jouw top 3 sectoren zijn:</li>';
 
-				$temp = 1
+				$temp = 1;
 
 				foreach ($top as $e){
 					if ($temp == 1){
 						$temp = 0;
-						mysqli_query($mysql, "UPDATE `Leerlingen` SET `Sector`= $e  WHERE `LLnr`= $leerlingnummer")
+						mysqli_query($mysql, "UPDATE `Leerlingen` SET `Sector`= $e  WHERE `LLnr`= $leerlingnummer");
 					}
 					$sectorNameArray = mysqli_query($mysql, "SELECT SectorNaam FROM Sectoren WHERE SectorID=$e");
 					list($sectorNameString) = mysqli_fetch_row($sectorNameArray);
-					echo "<li><a href=\"#\">$sectorNameString</li>";
+					$urlarray = mysqli_query($mysql, "SELECT URLSector FROM Sectoren WHERE SectorID=$e");
+					list($urlstring) = mysqli_fetch_row($urlarray);
+					echo "<li><a href=\"$urlstring\" target=\"_blank\">$sectorNameString</li>";
 				}
 				echo '</ol>';
 				// Hier wordt de connectie met de database weer verbroken
@@ -89,14 +89,21 @@
 			</tr>
 			<br>
 			<tr>
-				<form action="logout.php">					<!--klik hier om uit te loggen-->
-				<input type="submit" value="Uitloggen" />
-				</form>
+				<td>
+					<form action="mainloggedin.php">
+					<input type="submit" id="home" value="Home"/>
+					</form>
+				</td>
+				<td>
+					<form action="logout.php">
+					<input type="submit" id="Logout" value="Uitloggen"/>
+					</form>
+				</td>
 			</tr>
 		</table>
 	</div>
 
-	<div data-role="footer" data-position="fixed">
+	<div data-role="footer">
 		<h4>BeroepenTinder Fioretti College</h4>
 	</div><!-- /footer -->
 </div><!-- /page -->

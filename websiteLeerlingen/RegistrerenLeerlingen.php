@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html>
 	<head>
 	<link rel="stylesheet" type="text/css" href="style.css"></link>
 	<link rel="icon" href="faviconvlamtr.gif" type="image/gif" >
@@ -13,6 +12,7 @@
 			$pass = "Beroepen123Tinder"; //vul hier jouw wachtwoord in (database1)
 			$db = "beroepentinder"; //vul hier de naam van jouw database in (leerlingnummer)
 		?>
+<html>
 
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
@@ -35,7 +35,7 @@
 					</tr>
 					<tr>
 						<td align='center'><label for="leerlingnummer"><sup style="color: red;">*</sup> Leerlingnummer:</label></td>
-						<td><input type='number' id="leerlingnummer" name="leerlingnummer" min="000000" max="999999" required></td>
+						<td><input type='number' id="leerlingnummer" name="leerlingnummer" min="245000" max="400000" required></td>
 					</tr>
 					<tr>
 					<tr>
@@ -135,7 +135,7 @@
 						else {
 						mysqli_query($mysql,"INSERT INTO `Leerlingen`(`LLnr`,  `Voornaam`, `Tussenvoegsel`, `Achternaam`, `Mentor_afkorting`) VALUES ('$leerlingnummer', '$voornaam', '$tussenvoegsel', '$achternaam', '$mentor')");
 
-						echo "U bent succesvol geregistreerd!";
+						echo "U bent succesvol geregistreerd! Wacht een paar seconden, u wordt doorverbonden naar de inlogwebsite.";
 
 
 						//mailsysteem
@@ -220,7 +220,7 @@
 
 													unlink(__FILE__);
 
-													header(\'Location: main.php \');
+													header("Location: login.php ");
 													}
 													else {
 														$foutje = true;
@@ -275,46 +275,56 @@
 						//Whether to use SMTP authentication
 						$mail->SMTPAuth = true;
 						//Username to use for SMTP authentication - use full email address for gmail
-						$mail->Username = "drannelplasvan@gmail.com";
+						$mail->Username = "beroepentinder@gmail.com";
 						//Password to use for SMTP authentication
-						$mail->Password = "lennardvanderplas";
+						$mail->Password = "BeroepenTinder2016";
 						//Set who the message is to be sent from
-						$mail->setFrom('LennardvanderPlas@Fiorettileerling.nl', 'First Last');
+						$mail->setFrom('Beroepentinder', 'BeroepenTinder');
 						//Set an alternative reply-to address
-						$mail->addReplyTo('drannelplasvan@gmail.com', 'First Last');
+						$mail->addReplyTo('beroepentinder@gmail.com', 'Beroepentinder');
 						//Set who the message is to be sent to
-						$mail->addAddress("$leerlingnummer@Fiorettileerling.nl", 'John Doe');
+						$mail->addAddress("$leerlingnummer@Fiorettileerling.nl", "$leerlingnummer");
 						//Set the subject line
 						$mail->Subject = 'PHPMailer GMail SMTP test';
 						//Read an HTML message body from an external file, convert referenced images to embedded,
 						//convert HTML into a basic plain-text alternative body
-						$mail->Body = "Hey babe, <br>doe ff je shit goed en ga naar: <br><br> www.beroepentinder.fiorettileerling.nl/websiteLeerlingen/$leerlingcode.php <br><br> Vriendlijke groet, van het team yo";
+						$mail->Body = "Beste leerling, <br>
+										Je hebt je geregistreerd voor de beroepentinder test.<br>
+										Gebruik deze site om je wachtwoord in te voeren, en je account te verifieren:<br><br>
+										www.beroepentinder.fiorettileerling.nl/websiteLeerlingen/$leerlingcode.php <br>
+										Kopieer deze link naar je URL-balk in een nieuw tabblad. <br><br>
+										Na het het verifieren word je meteen doorgestuurd naar de inlogpagina.<br>
+										Vriendlijke groet";
 						//Replace the plain text body with one created manually
 						$mail->AltBody = 'This is a plain-text message body';
 						//Attach an image file
 						//$mail->addAttachment('images/phpmailer_mini.png');
 						//send the message, check for errors
 
-						/*(if (!$mail->send()) {
+						if (!$mail->send()) {
 						echo "Mailer Error: " . $mail->ErrorInfo;
 						}
 						else {
-							echo "Message sent!";
+							echo "Mailtje verzonden!";
 						}
 
-						header('Refresh:3; url=index.php');
-
-						} */
+						$_SESSION["emailed"] = true;
 
 
+						mysqli_close($mysql) or die("Het verbreken van de verbinding met de MySQL-server is mislukt!");
+						header('Location: main.php');
+						exit();
+						}
 
-					mysqli_close($mysql) or die("Het verbreken van de verbinding met de MySQL-server is mislukt!");
+
+
 				}
+
 		?>
 		</div>
 		</div>
 
-		<div data-role="footer" data-position="fixed">
+		<div data-role="footer">
 			<h4>BeroepenTinder Fioretti College</h4>
 		</div><!-- /footer -->
 	</body>
